@@ -1,0 +1,7 @@
+dynamicresolution
+extract pmp01
+SETENV (NLS_LANG=AMERICAN_AMERICA.AL32UTF8)
+userid gg_user,password gg_user
+rmthost hadoop1,mgrport 7809
+rmttrail /opt/ggs/dirdat/aa
+table send.test;
