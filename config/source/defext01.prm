@@ -1,0 +1,3 @@
+userid gg_user,password gg_user
+table send.test;
+defsfile /u01/gg/11.2/dirdef/defext01.def
