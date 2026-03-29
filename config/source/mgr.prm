@@ -1,1 +1,3 @@
-
+port 7809
+dynamicportlist 7800-8000
+autorestart extract *,retries 5,waitminutes 2,resetminutes 5
