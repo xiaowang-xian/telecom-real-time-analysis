@@ -1,0 +1,8 @@
+dynamicresolution
+extract ext01
+SETENV (NLS_LANG="AMERICAN_AMERICA.UTF8")
+userid gg_user,password gg_user
+tranlogoptions asmuser sys, asmpassword sys
+exttrail /u01/gg/11.2/dirdat/aa
+NOCOMPRESSDELETES
+table send.test;
