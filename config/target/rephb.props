@@ -1,0 +1,7 @@
+gg.handlerlist=hbase
+gg.handler.hbase.type=hbase
+gg.handler.hbase.hBaseColumnFamilyName=CF
+gg.handler.hbase.zookeeperQuorum=hadoop1,hadoop2,hadoop3
+gg.handler.hbase.zookeeperClientPort=2181
+gg.classpath=/app/hadoop/hbase-1.2.1/conf:/app/hadoop/hbase-1.2.1/lib/*:/usr/lib/java/jdk1.7.0_79/lib/*:/usr/lib/java/jdk1.7.0_79/jre/lib/*
+javawriter.bootoptions=-Xmx512m -Xms32m -Djava.class.path=ggjava/ggjava.jar
