@@ -1,0 +1,23 @@
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+symbolic-links=0
+
+# 从库核心配置
+server-id=2
+relay-log=relay-bin
+read_only=1
+super_read_only=1
+gtid_mode=ON
+enforce_gtid_consistency=1
+log_slave_updates=1
+
+# 性能优化配置与主库对齐
+innodb_buffer_pool_size=4G
+max_connections=1000
+slow_query_log=ON
+long_query_time=2
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
