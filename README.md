@@ -1,7 +1,6 @@
 # telecom-real-time-analysis
 # 运营商用户行为实时数据分析系统
 > 基于MySQL主从架构、Kubernetes Hadoop集群搭建的电信计费数据实时分析平台，解决传统关系型数据库在海量用户数据下的分析时效性瓶颈，支撑千万级用户行为的实时离线分析需求。
-明白了！重新梳理架构逻辑：**MySQL是目标端，存的是Hive分析后的结果数据**，不是源端。下面是完全修正后的GitHub README，架构逻辑正确、S型布局、极简清晰、100%兼容GitHub：
 
 ```mermaid
 flowchart TB
@@ -62,35 +61,6 @@ flowchart TB
 │   └── hive_external_table.sql # Hive与HBase映射表创建脚本
 └── README.md              # 项目说明文档
 ```
-
-## 免责说明
-本项目为脱敏后的教学与实践项目，不涉及运营商真实业务数据、核心系统配置与生产环境信息，所有内容仅用于大数据、数据库运维技术的学习与实践。
-
-
-## 快速部署指南
-### 1. 环境准备
-- 源端：2台CentOS 7服务器，安装MySQL 5.7，配置GTID主从复制
-- 目标端：Kubernetes集群，部署Hadoop 2.6.4、HBase 1.2.1、Hive 2.0.0
-- 通用环境：JDK 1.8+、GoldenGate 12.2 for BigData（目标端）
-
-### 2. MySQL主从集群部署
-1.  分别在主从库导入`config/mysql/`下的配置模板，修改server-id等专属参数
-2.  主库创建复制专用用户，开启binlog与GTID模式，重启数据库生效
-3.  主库全量备份数据，同步至从库完成初始化
-4.  从库配置主从复制链路，启动同步并验证状态正常
-5.  执行`sql/create_bill_table.sql`创建业务计费表，初始化测试数据
-
-### 3. 目标端大数据平台适配
-1.  验证K8s上Hadoop/HBase集群正常运行，创建HBase命名空间与业务表
-2.  部署GoldenGate目标端，导入`config/target/`下的配置文件
-3.  启动Manager、Replicat进程，验证增量数据正常写入HBase
-4.  执行`sql/hive_external_table.sql`创建Hive外部表，验证SQL查询正常
-
-### 4. 自动化监控部署
-1.  上传`scripts/mysql_monitor.sh`到MySQL从库，赋予执行权限
-2.  修改脚本内告警配置（邮件地址、钉钉WebHook）
-3.  配置Crontab定时任务，开启分钟级监控
-4.  模拟异常场景，验证告警通道正常触发
 
 ## 生产故障排查手册
 | 故障现象 | 根因分析 | 解决方案 |
